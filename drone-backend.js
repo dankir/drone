@@ -39,58 +39,59 @@ function fly(robot) {
     bot.drone.takeoff();
 
     after(8*1000, function() {
-        bot.drone.forward(0.2);
+        bot.drone.forward(0.1);
     });
 
-    after(11*1000, function() { //stop
+    after(10*1000, function() { //stop
         bot.drone.forward(0);
+        bot.drone.hover();
     });
 
     after(11.1*1000, function() {
-        bot.drone.back(0.2);
+        bot.drone.back(0.1);
     });
 
-    after(15*1000, function() {//stop
+    after(13*1000, function() {//stop
         bot.drone.back(0);
+        bot.drone.hover();
     });
 
+    var timeForLeft = 3;
     for(var i=0; i<4;i++){
-        after((15.1+4*i)*1000, function() {
+        after((15+4*i)*1000, function() {
+            bot.drone.left(0);
             bot.drone.right(0.2);
         });
 
-        after((17+4*i)*1000, function() { //stop
+        after((16.5+4*i)*1000, function() { //stop
             bot.drone.right(0);
-        });
-        after((17.1+4*i)*1000, function() {
             bot.drone.left(0.2);
-        });
-
-        after((19 + 4 * i)*1000, function() {//stop
-            bot.drone.left(0);
+            //bot.drone.hover();
         });
     }
 
-    after(31.1*1000, function(){
-       bot.drone.clockwise(0.2)
+    after(30.1*1000, function(){
+
+        bot.drone.left(0);
+       bot.drone.clockwise(0.2);
     });
 
-    after(34*1000, function(){
-       bot.drone.clockwise(0.2)
+    after(31*1000, function(){
+       bot.drone.clockwise(0.1);
     });
 
-    after(31.1*1000, function(){
-      bot.drone.anticlockwise(0.2)
+    /*after(32*1000, function(){
+      bot.drone.anticlockwise(0.1)
     });
 
-    after(34*1000, function(){
-       bot.drone.anticlockwise(0.2)
-     });
+    after(33*1000, function(){
+       bot.drone.anticlockwise(0.1)
+     });*/
 
-            after(34.1*1000, function() {
+    after(32*1000, function() {
         bot.drone.land();
     });
-    after(21*1000, function() {
+    after(36*1000, function() {
         bot.drone.stop();
     });
 
